@@ -17,12 +17,6 @@
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
 
-
-enum Grade {
-    Letter(String),
-    Point(f32)
-}
-
 pub struct ReportCard<T> {
     pub grade: T,
     pub student_name: String,
