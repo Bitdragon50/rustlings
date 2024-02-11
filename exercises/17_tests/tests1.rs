@@ -10,12 +10,17 @@
 // Execute `rustlings hint tests1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
+fn is_business_finished()-> bool {
+    true
+}
 
 #[cfg(test)]
 mod tests {
+    use crate::is_business_finished;
+
     #[test]
     fn you_can_assert() {
-        assert!();
+        assert!( is_business_finished());
     }
 }
