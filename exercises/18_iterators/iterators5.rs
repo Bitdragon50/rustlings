@@ -46,6 +46,7 @@ fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
             if val.1 == &value {count += 1} 
             count 
         });
+        
     count
 }
 
@@ -66,14 +67,14 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
     let mut count: usize = 0;
-    
-    println!("{:#?}", 6);
-     //|key: &val| if val == value {count += 1;Some(1)} else {count += 0;None});
-     count = collection.iter().map(|key|key.into_iter().fold(count,
+
+     count = collection.iter().map(|key|
+        key.into_iter().fold(count,
         |mut count, val| {
            if val.1 == &value {count += 1} 
-           count 
-       })).sum();
+           count}))
+           .sum();
+       
     count
 }
 
