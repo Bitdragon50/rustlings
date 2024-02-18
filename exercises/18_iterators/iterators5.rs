@@ -13,8 +13,9 @@
 
 // I AM NOT DONE
 
-use std::collections::HashMap;
+use std::{collections::HashMap, usize};
 
+#[derive(Debug)]
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Progress {
     None,
@@ -35,7 +36,17 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+
+    // take the dictionary and get the keys which have the value
+    let mut count: usize = 0;
+    //let progressed = map.into_iter().find_map(|(key, &val)| if val == value {count += 1} else {count += 0});
+    //progressed.expect("REASON").len()
+    count = map.into_iter().fold(count,
+         |mut count,val| {
+            if val.1 == &value {count += 1} 
+            count 
+        });
+    count
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -54,7 +65,16 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    let mut count: usize = 0;
+    
+    println!("{:#?}", 6);
+     //|key: &val| if val == value {count += 1;Some(1)} else {count += 0;None});
+     count = collection.iter().map(|key|key.into_iter().fold(count,
+        |mut count, val| {
+           if val.1 == &value {count += 1} 
+           count 
+       })).sum();
+    count
 }
 
 #[cfg(test)]

@@ -3,7 +3,7 @@
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
@@ -15,6 +15,19 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    //take the first number and multiply by the next number down
+    //let mut factorial_vec: Vec<u64> = (num..0).collect();
+    //factorial_vec = factorial_vec.into_iter().product();
+    let mut prod: u64;
+
+    if num >= 1 {
+        println!("{:#?}",(num..=1).collect::<Vec<u64>>());
+        prod = (1..=num).collect::<Vec<u64>>().into_iter().product();
+    } else {
+        prod = (num..0).collect::<Vec<u64>>().into_iter().product();
+    }
+    prod
 }
 
 #[cfg(test)]
